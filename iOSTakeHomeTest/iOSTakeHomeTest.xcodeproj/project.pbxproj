@@ -15,6 +15,8 @@
 		5F01D1C92D03AE1500337D14 /* iOSTakeHomeTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1C82D03AE1500337D14 /* iOSTakeHomeTestTests.swift */; };
 		5F01D1D32D03AE1500337D14 /* iOSTakeHomeTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1D22D03AE1500337D14 /* iOSTakeHomeTestUITests.swift */; };
 		5F01D1D52D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */; };
+		5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E22D03B78400337D14 /* NetworkManager.swift */; };
+		5F01D1E52D03B7D400337D14 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E42D03B7D400337D14 /* ApiConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		5F01D1CE2D03AE1500337D14 /* iOSTakeHomeTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTakeHomeTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F01D1D22D03AE1500337D14 /* iOSTakeHomeTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestUITests.swift; sourceTree = "<group>"; };
 		5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F01D1E22D03B78400337D14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5F01D1E42D03B7D400337D14 /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		5F01D1B02D03AE1300337D14 /* iOSTakeHomeTest */ = {
 			isa = PBXGroup;
 			children = (
+				5F01D1E12D03B6A000337D14 /* NetworkLayer */,
 				5F01D1B12D03AE1300337D14 /* AppDelegate.swift */,
 				5F01D1B52D03AE1300337D14 /* ViewController.swift */,
 				5F01D1B72D03AE1300337D14 /* Main.storyboard */,
@@ -122,6 +127,15 @@
 				5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */,
 			);
 			path = iOSTakeHomeTestUITests;
+			sourceTree = "<group>";
+		};
+		5F01D1E12D03B6A000337D14 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1E22D03B78400337D14 /* NetworkManager.swift */,
+				5F01D1E42D03B7D400337D14 /* ApiConstants.swift */,
+			);
+			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F01D1E52D03B7D400337D14 /* ApiConstants.swift in Sources */,
+				5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */,
 				5F01D1B62D03AE1300337D14 /* ViewController.swift in Sources */,
 				5F01D1B22D03AE1300337D14 /* AppDelegate.swift in Sources */,
 			);
