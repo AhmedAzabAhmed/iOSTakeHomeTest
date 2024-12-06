@@ -17,6 +17,10 @@
 		5F01D1D52D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */; };
 		5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E22D03B78400337D14 /* NetworkManager.swift */; };
 		5F01D1E52D03B7D400337D14 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E42D03B7D400337D14 /* ApiConstants.swift */; };
+		5F01D1E82D03B9B700337D14 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E72D03B9B700337D14 /* CharacterRepository.swift */; };
+		5F01D1EB2D03BA6400337D14 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1EA2D03BA6400337D14 /* CharacterResponse.swift */; };
+		5F01D1ED2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1EC2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift */; };
+		5F01D1F12D03C0EC00337D14 /* CharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F01D1E22D03B78400337D14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F01D1E42D03B7D400337D14 /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		5F01D1E72D03B9B700337D14 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
+		5F01D1EA2D03BA6400337D14 /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
+		5F01D1EC2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryImplementation.swift; sourceTree = "<group>"; };
+		5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				5F01D1E12D03B6A000337D14 /* NetworkLayer */,
+				5F01D1E92D03BA1D00337D14 /* Entities */,
+				5F01D1E62D03B96400337D14 /* Repository  */,
+				5F01D1EF2D03C0CA00337D14 /* UseCase  */,
 				5F01D1B12D03AE1300337D14 /* AppDelegate.swift */,
 				5F01D1B52D03AE1300337D14 /* ViewController.swift */,
 				5F01D1B72D03AE1300337D14 /* Main.storyboard */,
@@ -136,6 +147,39 @@
 				5F01D1E42D03B7D400337D14 /* ApiConstants.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		5F01D1E62D03B96400337D14 /* Repository  */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1EE2D03BF4300337D14 /* CharacterRepository */,
+			);
+			path = "Repository ";
+			sourceTree = "<group>";
+		};
+		5F01D1E92D03BA1D00337D14 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1EA2D03BA6400337D14 /* CharacterResponse.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		5F01D1EE2D03BF4300337D14 /* CharacterRepository */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1E72D03B9B700337D14 /* CharacterRepository.swift */,
+				5F01D1EC2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift */,
+			);
+			path = CharacterRepository;
+			sourceTree = "<group>";
+		};
+		5F01D1EF2D03C0CA00337D14 /* UseCase  */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */,
+			);
+			path = "UseCase ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +315,12 @@
 			files = (
 				5F01D1E52D03B7D400337D14 /* ApiConstants.swift in Sources */,
 				5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */,
+				5F01D1ED2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift in Sources */,
+				5F01D1EB2D03BA6400337D14 /* CharacterResponse.swift in Sources */,
 				5F01D1B62D03AE1300337D14 /* ViewController.swift in Sources */,
 				5F01D1B22D03AE1300337D14 /* AppDelegate.swift in Sources */,
+				5F01D1E82D03B9B700337D14 /* CharacterRepository.swift in Sources */,
+				5F01D1F12D03C0EC00337D14 /* CharacterUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
