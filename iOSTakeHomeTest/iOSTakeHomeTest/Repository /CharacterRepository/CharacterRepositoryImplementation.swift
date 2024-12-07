@@ -13,8 +13,6 @@ final class CharacterRepositoryImplementation: CharacterRepository {
         
         if !params.isEmpty {
             urlString += "?" + params.compactMap { key, value -> String? in
-                // Safely convert each parameter to a valid query string component
-                guard let value = value as? String else { return nil }
                 return "\(key)=\(value)"
             }.joined(separator: "&")
         }
