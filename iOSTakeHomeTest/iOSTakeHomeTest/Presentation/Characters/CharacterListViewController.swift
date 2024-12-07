@@ -15,6 +15,7 @@ class CharacterListViewController: UITableViewController {
     private var cancellable: Set<AnyCancellable> = []
     
     private var loadingIndicator: UIActivityIndicatorView!
+    private var selectedButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +94,14 @@ class CharacterListViewController: UITableViewController {
     @objc private func filterButtonTapped(_ sender: UIButton) {
         guard let title = sender.configuration?.title,
               let filter = StatusFilter(rawValue: title) else { return }
-        print("Filter selected: \(filter.rawValue)")
+        selectedButton?.backgroundColor = .clear
+        selectedButton?.configuration?.baseForegroundColor = .black
+
+        sender.backgroundColor = .blue
+        sender.configuration?.baseForegroundColor = .white
+        selectedButton = sender
+        viewModel.setStatus(filter.rawValue.lowercased())
+        viewModel.fetchCharacters()
     }
     
     private func bindObservers() {
@@ -129,7 +137,7 @@ class CharacterListViewController: UITableViewController {
                     characters = list
                     tableView.reloadData()
                     
-                case .failure(let error):
+                case .failure(_):
                     break
                 }
             }.store(in: &cancellable)

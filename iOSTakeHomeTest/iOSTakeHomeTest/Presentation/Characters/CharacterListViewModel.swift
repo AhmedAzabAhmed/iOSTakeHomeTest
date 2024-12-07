@@ -14,16 +14,21 @@ final class CharacterListViewModel {
     private var characters: [CharacterVM] = []
     let charactersSubject = PassthroughSubject<ScreenState<[CharacterVM]>, Never>()
     let moreCharactersSubject = PassthroughSubject<ScreenState<[CharacterVM]>, Never>()
+    private var status: String?
     
     init(useCase: CharacterUseCase) {
         self.useCase = useCase
+    }
+    
+    func setStatus(_ value: String?) {
+        status = value
     }
     
     func fetchCharacters() {
         charactersSubject.send(.loading)
         Task {
             do {
-               let result = try await useCase.fetchCharacters()
+                let result = try await useCase.fetchCharacters(status: status)
                 characters.removeAll()
                 characters.append(contentsOf: result)
                 charactersSubject.send(.success(characters))
@@ -38,7 +43,7 @@ final class CharacterListViewModel {
         moreCharactersSubject.send(.loading)
         Task {
             do {
-               let result = try await useCase.loadMoreCharacters()
+                let result = try await useCase.loadMoreCharacters(status: status)
                 characters.append(contentsOf: result)
                 moreCharactersSubject.send(.success(characters))
                 
