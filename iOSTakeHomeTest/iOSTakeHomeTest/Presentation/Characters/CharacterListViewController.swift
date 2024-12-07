@@ -25,6 +25,10 @@ class CharacterListViewController: UITableViewController {
         viewModel.fetchCharacters()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func setupUI() {
         let headerView = createFilterHeaderView()
         tableView.tableHeaderView = headerView
@@ -166,7 +170,7 @@ class CharacterListViewController: UITableViewController {
         let selectedCharacter = characters[indexPath.row]
         let detailView = CharacterDetailView(character: selectedCharacter)
         let hostingController = UIHostingController(rootView: detailView)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.pushViewController(hostingController, animated: true)
     }
 }
