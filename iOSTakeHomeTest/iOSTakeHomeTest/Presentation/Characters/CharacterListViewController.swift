@@ -17,12 +17,14 @@ class CharacterListViewController: UITableViewController {
     
     private var loadingIndicator: UIActivityIndicatorView!
     private var selectedButton: UIButton?
+    private var footerLoadingIndicator: UIActivityIndicatorView!
     private let cellIdentifier = "CharacterTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupLoadingIndicator()
+        setupFooterLoadingIndicator()
         bindObservers()
         viewModel.fetchCharacters()
     }
@@ -51,6 +53,21 @@ class CharacterListViewController: UITableViewController {
             loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    
+    private func setupFooterLoadingIndicator() {
+          let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+          footerLoadingIndicator = UIActivityIndicatorView(style: .medium)
+          footerLoadingIndicator.hidesWhenStopped = true
+          footerLoadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+          footerView.addSubview(footerLoadingIndicator)
+          
+          NSLayoutConstraint.activate([
+              footerLoadingIndicator.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+              footerLoadingIndicator.centerYAnchor.constraint(equalTo: footerView.centerYAnchor)
+          ])
+          
+          tableView.tableFooterView = footerView
+      }
     
     private func createFilterHeaderView() -> UIView {
         let filters = StatusFilter.allCases
@@ -147,13 +164,14 @@ class CharacterListViewController: UITableViewController {
                 guard let self else { return }
                 switch state {
                 case .loading:
-                    break
+                    footerLoadingIndicator.startAnimating()
                 case .success(let list):
                     characters = list
                     tableView.reloadData()
+                    footerLoadingIndicator.stopAnimating()
                     
                 case .failure(_):
-                    break
+                    footerLoadingIndicator.stopAnimating()
                 }
             }.store(in: &cancellable)
     }
