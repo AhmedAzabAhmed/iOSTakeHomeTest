@@ -17,10 +17,12 @@ class CharacterListViewController: UITableViewController {
     
     private var loadingIndicator: UIActivityIndicatorView!
     private var selectedButton: UIButton?
+    private let cellIdentifier = "CharacterTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupLoadingIndicator()
         bindObservers()
         viewModel.fetchCharacters()
     }
@@ -33,11 +35,13 @@ class CharacterListViewController: UITableViewController {
         let headerView = createFilterHeaderView()
         tableView.tableHeaderView = headerView
         
-        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "CharacterTableViewCell")
+        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         navigationItem.title = "Characters"
-        
+    }
+    
+    private func setupLoadingIndicator() {
         loadingIndicator = UIActivityIndicatorView(style: .large)
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -160,7 +164,7 @@ class CharacterListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as? CharacterTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CharacterTableViewCell else { return UITableViewCell() }
         let character = characters[indexPath.row]
         cell.configure(with: character)
         return cell
