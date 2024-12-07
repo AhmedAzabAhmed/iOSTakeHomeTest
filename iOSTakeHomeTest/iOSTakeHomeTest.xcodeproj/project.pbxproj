@@ -12,7 +12,7 @@
 		5F01D1B92D03AE1300337D14 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5F01D1B82D03AE1300337D14 /* Base */; };
 		5F01D1BB2D03AE1500337D14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F01D1BA2D03AE1500337D14 /* Assets.xcassets */; };
 		5F01D1BE2D03AE1500337D14 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5F01D1BD2D03AE1500337D14 /* Base */; };
-		5F01D1C92D03AE1500337D14 /* iOSTakeHomeTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1C82D03AE1500337D14 /* iOSTakeHomeTestTests.swift */; };
+		5F01D1C92D03AE1500337D14 /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1C82D03AE1500337D14 /* CharacterListViewModelTests.swift */; };
 		5F01D1D32D03AE1500337D14 /* iOSTakeHomeTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1D22D03AE1500337D14 /* iOSTakeHomeTestUITests.swift */; };
 		5F01D1D52D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */; };
 		5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1E22D03B78400337D14 /* NetworkManager.swift */; };
@@ -28,6 +28,7 @@
 		5F01D2012D03D06100337D14 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2002D03D06000337D14 /* CharacterTableViewCell.swift */; };
 		5F01D2032D03D23700337D14 /* DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2022D03D23700337D14 /* DataProcessor.swift */; };
 		5F01D2062D04896100337D14 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2052D04896100337D14 /* CharacterDetailView.swift */; };
+		5F01D20A2D04DE7100337D14 /* MockCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2092D04DE7100337D14 /* MockCharacterRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,7 @@
 		5F01D1BD2D03AE1500337D14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F01D1BF2D03AE1500337D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F01D1C42D03AE1500337D14 /* iOSTakeHomeTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTakeHomeTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F01D1C82D03AE1500337D14 /* iOSTakeHomeTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestTests.swift; sourceTree = "<group>"; };
+		5F01D1C82D03AE1500337D14 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
 		5F01D1CE2D03AE1500337D14 /* iOSTakeHomeTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTakeHomeTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F01D1D22D03AE1500337D14 /* iOSTakeHomeTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestUITests.swift; sourceTree = "<group>"; };
 		5F01D1D42D03AE1500337D14 /* iOSTakeHomeTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTakeHomeTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		5F01D2002D03D06000337D14 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		5F01D2022D03D23700337D14 /* DataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessor.swift; sourceTree = "<group>"; };
 		5F01D2052D04896100337D14 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		5F01D2092D04DE7100337D14 /* MockCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,8 @@
 		5F01D1C72D03AE1500337D14 /* iOSTakeHomeTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F01D1C82D03AE1500337D14 /* iOSTakeHomeTestTests.swift */,
+				5F01D1C82D03AE1500337D14 /* CharacterListViewModelTests.swift */,
+				5F01D2092D04DE7100337D14 /* MockCharacterRepository.swift */,
 			);
 			path = iOSTakeHomeTestTests;
 			sourceTree = "<group>";
@@ -388,7 +391,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F01D1C92D03AE1500337D14 /* iOSTakeHomeTestTests.swift in Sources */,
+				5F01D1C92D03AE1500337D14 /* CharacterListViewModelTests.swift in Sources */,
+				5F01D20A2D04DE7100337D14 /* MockCharacterRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
