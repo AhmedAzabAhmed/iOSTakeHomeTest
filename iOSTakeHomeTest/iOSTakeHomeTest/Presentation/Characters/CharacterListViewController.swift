@@ -14,11 +14,11 @@ class CharacterListViewController: UITableViewController {
     private var characters: [CharacterVM] = []
     private let viewModel = CharacterListViewModel(useCase: CharacterUseCase(repository: CharacterRepositoryImplementation()))
     private var cancellable: Set<AnyCancellable> = []
+    private let cellIdentifier = "CharacterTableViewCell"
     
     private var loadingIndicator: UIActivityIndicatorView!
     private var selectedButton: UIButton?
     private var footerLoadingIndicator: UIActivityIndicatorView!
-    private let cellIdentifier = "CharacterTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,7 @@ class CharacterListViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    // MARK: - UI Setup Methods
     private func setupUI() {
         let headerView = createFilterHeaderView()
         tableView.tableHeaderView = headerView
@@ -117,6 +118,7 @@ class CharacterListViewController: UITableViewController {
         return containerView
     }
 
+    // MARK: - Button Actions
     @objc private func filterButtonTapped(_ sender: UIButton) {
         guard let title = sender.configuration?.title,
               let filter = StatusFilter(rawValue: title) else { return }
@@ -130,53 +132,58 @@ class CharacterListViewController: UITableViewController {
         viewModel.fetchCharacters()
     }
     
+    // MARK: - Bind Observers
     private func bindObservers() {
         viewModel.charactersSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self else { return }
-                switch state {
-                case .loading:
-                    loadingIndicator.startAnimating()
-                    tableView.backgroundView = nil
-                    
-                case .success(let list):
-                    characters = list
-                    tableView.reloadData()
-                    loadingIndicator.stopAnimating()
-                    if characters.isEmpty {
-                        tableView.backgroundView = createEmptyView()
-                    } else {
-                        tableView.backgroundView = nil
-                    }
-                    
-                case .failure(_):
-                    loadingIndicator.stopAnimating()
-                    characters.removeAll()
-                    tableView.reloadData()
-                    tableView.backgroundView = createEmptyView()
-                }
+                handleStateChange(state)
             }.store(in: &cancellable)
         
         viewModel.moreCharactersSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self else { return }
-                switch state {
-                case .loading:
-                    footerLoadingIndicator.startAnimating()
-                case .success(let list):
-                    characters = list
-                    tableView.reloadData()
-                    footerLoadingIndicator.stopAnimating()
-                    
-                case .failure(_):
-                    footerLoadingIndicator.stopAnimating()
-                }
+                handleMoreCharactersStateChange(state)
             }.store(in: &cancellable)
     }
     
+    // MARK: - State Handling
+      private func handleStateChange(_ state: ScreenState<[CharacterVM]>) {
+          switch state {
+          case .loading:
+              loadingIndicator.startAnimating()
+              tableView.backgroundView = nil
+          case .success(let list):
+              characters.removeAll()
+              characters.append(contentsOf: list)
+              tableView.reloadData()
+              loadingIndicator.stopAnimating()
+              tableView.backgroundView = characters.isEmpty ? createEmptyView() : nil
+          case .failure:
+              loadingIndicator.stopAnimating()
+              characters.removeAll()
+              tableView.reloadData()
+              tableView.backgroundView = createEmptyView()
+          }
+      }
     
+    private func handleMoreCharactersStateChange(_ state: ScreenState<[CharacterVM]>) {
+            switch state {
+            case .loading:
+                footerLoadingIndicator.startAnimating()
+            case .success(let list):
+                characters.removeAll()
+                characters.append(contentsOf: list)
+                tableView.reloadData()
+                footerLoadingIndicator.stopAnimating()
+            case .failure:
+                footerLoadingIndicator.stopAnimating()
+            }
+        }
+    
+    // MARK: - TableView Data Source & Delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
@@ -225,5 +232,4 @@ extension CharacterListViewController {
         
         return emptyView
     }
-
 }
