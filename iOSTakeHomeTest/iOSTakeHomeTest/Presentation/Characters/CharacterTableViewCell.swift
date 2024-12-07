@@ -98,17 +98,31 @@ class CharacterTableViewCell: UITableViewCell {
         self.profileImageView.image = UIImage(named: "placeholder")
         titleLabel.text = character.name
         subtitleLabel.text = character.species
+        
+        let loader = UIActivityIndicatorView(style: .medium)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        self.profileImageView.addSubview(loader)
+        
+        NSLayoutConstraint.activate([
+            loader.centerXAnchor.constraint(equalTo: self.profileImageView.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: self.profileImageView.centerYAnchor)
+        ])
+        loader.startAnimating()
         Task {
             if let url = URL(string: character.image) {
                 do {
                     let data = try await NetworkManager.shared.request(url: url)
                     DispatchQueue.main.async {
                         self.profileImageView.image = UIImage(data: data)
+                        loader.stopAnimating()
+                        loader.removeFromSuperview()
                     }
                 } catch {
                     print("Failed to load image: \(error)")
                     DispatchQueue.main.async {
                         self.profileImageView.image = UIImage(named: "placeholder")
+                        loader.stopAnimating()
+                        loader.removeFromSuperview()
                     }
                 }
             }
