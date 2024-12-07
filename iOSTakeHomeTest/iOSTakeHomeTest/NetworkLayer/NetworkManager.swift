@@ -8,15 +8,11 @@
 import Foundation
 
 final class NetworkManager {
-    
     static let shared = NetworkManager()
     
     private init() {}
     
-    func request<T: Decodable>(
-        url: URL,
-        responseType: T.Type
-    ) async throws -> T {
+    func request(url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse,
@@ -24,7 +20,7 @@ final class NetworkManager {
             throw URLError(.badServerResponse)
         }
         
-        let decodedData = try JSONDecoder().decode(T.self, from: data)
-        return decodedData
+        return data
     }
 }
+

@@ -11,3 +11,9 @@ struct ApiConstants {
     
     static let baseURL = "https://rickandmortyapi.com/api/character"
 }
+
+extension ApiConstants {
+    enum Errors: String, Error {
+        case genericError
+    }
+}

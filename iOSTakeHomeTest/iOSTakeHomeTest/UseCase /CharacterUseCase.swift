@@ -16,13 +16,13 @@ final class CharacterUseCase {
         self.repository = repository
     }
     
-    func fetchCharacters() async throws -> CharacterResponse {
+    func fetchCharacters() async throws -> [CharacterVM] {
         page = 1
-        return try await repository.fetchCharacters(page: page)
+        return try await repository.fetchCharacters(page: page).mapToCharacterVM()
     }
     
-    func loadMoreCharacters() async throws -> CharacterResponse {
+    func loadMoreCharacters() async throws -> [CharacterVM] {
         page += 1
-        return try await repository.fetchCharacters(page: page)
+        return try await repository.fetchCharacters(page: page).mapToCharacterVM()
     }
 }

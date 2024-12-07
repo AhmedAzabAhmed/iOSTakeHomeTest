@@ -12,7 +12,7 @@ final class CharacterRepositoryImplementation: CharacterRepository {
         guard let url = URL(string: "\(ApiConstants.baseURL)?page=\(page)") else {
             throw URLError(.badURL)
         }
-        
-        return try await NetworkManager.shared.request(url: url, responseType: CharacterResponse.self)
+        let rawData = try await NetworkManager.shared.request(url: url)
+        return try DataProcessor.shared.decode(rawData, to: CharacterResponse.self)
     }
 }
