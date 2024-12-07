@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SwiftUI
 
 class CharacterListViewController: UITableViewController {
     
@@ -120,7 +121,7 @@ class CharacterListViewController: UITableViewController {
                     loadingIndicator.stopAnimating()
                     tableView.isUserInteractionEnabled = true
                     
-                case .failure(let error):
+                case .failure(_):
                     loadingIndicator.stopAnimating()
                     tableView.isUserInteractionEnabled = true
                 }
@@ -162,5 +163,10 @@ class CharacterListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCharacter = characters[indexPath.row]
+        let detailView = CharacterDetailView(character: selectedCharacter)
+        let hostingController = UIHostingController(rootView: detailView)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.pushViewController(hostingController, animated: true)
     }
 }
