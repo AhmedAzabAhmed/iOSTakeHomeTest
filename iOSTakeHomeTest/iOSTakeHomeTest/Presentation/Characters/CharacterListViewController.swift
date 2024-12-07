@@ -116,18 +116,24 @@ class CharacterListViewController: UITableViewController {
                 guard let self else { return }
                 switch state {
                 case .loading:
-                    self.loadingIndicator.startAnimating()
-                    self.tableView.isUserInteractionEnabled = false
+                    loadingIndicator.startAnimating()
+                    tableView.backgroundView = nil
                     
                 case .success(let list):
                     characters = list
                     tableView.reloadData()
                     loadingIndicator.stopAnimating()
-                    tableView.isUserInteractionEnabled = true
+                    if characters.isEmpty {
+                        tableView.backgroundView = createEmptyView()
+                    } else {
+                        tableView.backgroundView = nil
+                    }
                     
                 case .failure(_):
                     loadingIndicator.stopAnimating()
-                    tableView.isUserInteractionEnabled = true
+                    characters.removeAll()
+                    tableView.reloadData()
+                    tableView.backgroundView = createEmptyView()
                 }
             }.store(in: &cancellable)
         
@@ -173,4 +179,29 @@ class CharacterListViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.pushViewController(hostingController, animated: true)
     }
+}
+
+// MARK: - Empty View
+extension CharacterListViewController {
+    func createEmptyView() -> UIView {
+        let emptyView = UIView()
+        
+        let label = UILabel()
+        label.text = "No characters available"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .gray
+        label.textAlignment = .center
+        
+        emptyView.addSubview(label)
+        
+        // Set label's constraints
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor)
+        ])
+        
+        return emptyView
+    }
+
 }
