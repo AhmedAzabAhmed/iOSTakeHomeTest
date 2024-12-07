@@ -21,6 +21,12 @@
 		5F01D1EB2D03BA6400337D14 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1EA2D03BA6400337D14 /* CharacterResponse.swift */; };
 		5F01D1ED2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1EC2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift */; };
 		5F01D1F12D03C0EC00337D14 /* CharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */; };
+		5F01D1F52D03C41700337D14 /* CharacterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1F42D03C41700337D14 /* CharacterVM.swift */; };
+		5F01D1F92D03C67900337D14 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1F82D03C67900337D14 /* CharacterListViewController.swift */; };
+		5F01D1FB2D03C7F000337D14 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1FA2D03C7F000337D14 /* CharacterListViewModel.swift */; };
+		5F01D1FE2D03CCC900337D14 /* ScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D1FD2D03CCC900337D14 /* ScreenState.swift */; };
+		5F01D2012D03D06100337D14 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2002D03D06000337D14 /* CharacterTableViewCell.swift */; };
+		5F01D2032D03D23700337D14 /* DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01D2022D03D23700337D14 /* DataProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,12 @@
 		5F01D1EA2D03BA6400337D14 /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
 		5F01D1EC2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepositoryImplementation.swift; sourceTree = "<group>"; };
 		5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUseCase.swift; sourceTree = "<group>"; };
+		5F01D1F42D03C41700337D14 /* CharacterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVM.swift; sourceTree = "<group>"; };
+		5F01D1F82D03C67900337D14 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		5F01D1FA2D03C7F000337D14 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		5F01D1FD2D03CCC900337D14 /* ScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenState.swift; sourceTree = "<group>"; };
+		5F01D2002D03D06000337D14 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		5F01D2022D03D23700337D14 /* DataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +121,12 @@
 		5F01D1B02D03AE1300337D14 /* iOSTakeHomeTest */ = {
 			isa = PBXGroup;
 			children = (
+				5F01D1FC2D03CCBE00337D14 /* Utils */,
 				5F01D1E12D03B6A000337D14 /* NetworkLayer */,
 				5F01D1E92D03BA1D00337D14 /* Entities */,
 				5F01D1E62D03B96400337D14 /* Repository  */,
 				5F01D1EF2D03C0CA00337D14 /* UseCase  */,
+				5F01D1F22D03C3C000337D14 /* Presentation */,
 				5F01D1B12D03AE1300337D14 /* AppDelegate.swift */,
 				5F01D1B52D03AE1300337D14 /* ViewController.swift */,
 				5F01D1B72D03AE1300337D14 /* Main.storyboard */,
@@ -144,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				5F01D1E22D03B78400337D14 /* NetworkManager.swift */,
+				5F01D2022D03D23700337D14 /* DataProcessor.swift */,
 				5F01D1E42D03B7D400337D14 /* ApiConstants.swift */,
 			);
 			path = NetworkLayer;
@@ -180,6 +195,33 @@
 				5F01D1F02D03C0EC00337D14 /* CharacterUseCase.swift */,
 			);
 			path = "UseCase ";
+			sourceTree = "<group>";
+		};
+		5F01D1F22D03C3C000337D14 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1F32D03C40000337D14 /* Characters */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		5F01D1F32D03C40000337D14 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1F82D03C67900337D14 /* CharacterListViewController.swift */,
+				5F01D1FA2D03C7F000337D14 /* CharacterListViewModel.swift */,
+				5F01D1F42D03C41700337D14 /* CharacterVM.swift */,
+				5F01D2002D03D06000337D14 /* CharacterTableViewCell.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		5F01D1FC2D03CCBE00337D14 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5F01D1FD2D03CCC900337D14 /* ScreenState.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +356,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F01D1E52D03B7D400337D14 /* ApiConstants.swift in Sources */,
+				5F01D2012D03D06100337D14 /* CharacterTableViewCell.swift in Sources */,
+				5F01D1FE2D03CCC900337D14 /* ScreenState.swift in Sources */,
+				5F01D1FB2D03C7F000337D14 /* CharacterListViewModel.swift in Sources */,
 				5F01D1E32D03B78400337D14 /* NetworkManager.swift in Sources */,
+				5F01D1F92D03C67900337D14 /* CharacterListViewController.swift in Sources */,
 				5F01D1ED2D03BC9A00337D14 /* CharacterRepositoryImplementation.swift in Sources */,
 				5F01D1EB2D03BA6400337D14 /* CharacterResponse.swift in Sources */,
+				5F01D2032D03D23700337D14 /* DataProcessor.swift in Sources */,
 				5F01D1B62D03AE1300337D14 /* ViewController.swift in Sources */,
 				5F01D1B22D03AE1300337D14 /* AppDelegate.swift in Sources */,
 				5F01D1E82D03B9B700337D14 /* CharacterRepository.swift in Sources */,
+				5F01D1F52D03C41700337D14 /* CharacterVM.swift in Sources */,
 				5F01D1F12D03C0EC00337D14 /* CharacterUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
