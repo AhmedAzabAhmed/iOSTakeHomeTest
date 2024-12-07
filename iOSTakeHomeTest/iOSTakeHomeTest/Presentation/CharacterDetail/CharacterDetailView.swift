@@ -10,15 +10,30 @@ import SwiftUI
 struct CharacterDetailView: View {
     
     let character: CharacterVM
+    @State private var isImageLoaded = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             ZStack(alignment: .topLeading) {
                 AsyncImage(url: URL(string: character.image)) { image in
-                    image.resizable().scaledToFill()
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .onAppear {
+                            isImageLoaded = true
+                        }
+                        .onDisappear {
+                            isImageLoaded = false
+                        }
                 } placeholder: {
-                    ProgressView()
+                    // Custom ProgressView as a loader
+                    if !isImageLoaded {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(1.5)
+                            .padding(40)
+                    }
                 }
                 .frame(height: 350)
                 .cornerRadius(20)
