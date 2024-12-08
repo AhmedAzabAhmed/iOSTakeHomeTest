@@ -24,7 +24,7 @@ Steps to Build and Run the Application
 
 Development Assumptions and Decisions
     Architectural Decisions
-        MVVM architecture used
+        Clean architecture used
         Key design principles followed
 
     Key Technical Choices
